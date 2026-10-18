@@ -5,7 +5,7 @@ import { formatAmount, describeAmount } from '../../lib/amount';
 import { explain } from '../../lib/errors';
 import { useAnnouncer } from '../../context/useAnnouncer';
 import { PendingPulse } from '../state/AsyncStates';
-import { AllocatedSpending } from './AllocatedSpending';
+import { ModePill } from '../ui';
 import './AwardCard.css';
 
 interface AwardCardProps {
@@ -101,12 +101,7 @@ export function AwardCard({
             {formatAmount(grantedBigInt, { asset: 'USDC' })}
           </span>
         </div>
-        <div className="award-card__badges">
-          {award.sample && (
-            <span className="award-card__sample">Sample data</span>
-          )}
-          <span className="award-card__mode-badge">{award.mode} mode</span>
-        </div>
+        <ModePill mode={award.mode} />
       </div>
 
       {/* Tranche Tiles (C03) */}
